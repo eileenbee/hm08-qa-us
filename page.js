@@ -104,7 +104,7 @@ module.exports = {
         await slideSwitch.click();
     },
     // 2 orders of ice cream
-    iceCreamPlusbutton: async function() {
+    clickIceCreamPlusbutton: async function() {
         const iceCreamPlusButton = await $(this.iceCreamPlusButton);
         await iceCreamPlusButton.waitForDisplayed();
         await iceCreamPlusButton.click();
