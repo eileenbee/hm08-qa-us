@@ -12,7 +12,9 @@ describe('Create an order', () => {
     }),  
 
         // Selecting the Supportive Plan
-    it('should click on the Supportive Plan', async () => {    
+    it('should click on the Supportive Plan', async () => {  
+        await browser.url(`/`)
+        await page.fillAddresses('East 2nd Street, 601', '1300 1st St');  
         const selectSupportivePlan = await $(page.selectSupportivePlan);
         await selectSupportivePlan.waitForDisplayed();
         await selectSupportivePlan.click();
@@ -20,14 +22,18 @@ describe('Create an order', () => {
     }),    
 
         // Adding the phone number
-    it('should add a phone number', async () => {    
+    it('should add a phone number', async () => {  
+        await browser.url(`/`)
+        await page.fillAddresses('East 2nd Street, 601', '1300 1st St');  
         const phoneNumber = helper.getPhoneNumber("+1");
         await page.submitPhoneNumber(phoneNumber);
         await expect(await helper.getElementByText(phoneNumber)).toBeExisting();
     }),
 
         // Adding a credit card
-    it('should add payment method', async () => {    
+    it('should add payment method', async () => {   
+        await browser.url(`/`) 
+        await page.fillAddresses('East 2nd Street, 601', '1300 1st St');
         await page.addPaymentMethodCard();
         const cardPaymentMethodIcon = await $(page.cardPaymentMethodIcon);
         await cardPaymentMethodIcon.waitForDisplayed();
@@ -35,7 +41,9 @@ describe('Create an order', () => {
     }),
 
         // Adding a message to the driver
-    it('should add a message to the driver', async () => {    
+    it('should add a message to the driver', async () => {  
+        await browser.url(`/`)  
+        await page.fillAddresses('East 2nd Street, 601', '1300 1st St');
         const messageField = await $(page.messageField);
         await messageField.waitForDisplayed();
         await messageField.setValue('Get some whiskey')
@@ -43,7 +51,9 @@ describe('Create an order', () => {
     }),
 
         // Ordering a blanket and handkerchiefs
-    it('should slide the radio button', async () => {    
+    it('should slide the radio button', async () => { 
+        await browser.url(`/`)  
+        await page.fillAddresses('East 2nd Street, 601', '1300 1st St'); 
         const slideSwitch = await $(page.slideSwitch);
         await slideSwitch.click();
         await expect(await $(slideSwitch)).toBeExisting();
@@ -51,6 +61,8 @@ describe('Create an order', () => {
 
         // Ordering 2 orders of ice cream
     it('should click on the + button', async () => {
+        await browser.url(`/`)
+        await page.fillAddresses('East 2nd Street, 601', '1300 1st St');
         const iceCreamPlusButton = await $(page.iceCreamPlusButton);
         await iceCreamPlusButton.click();
         await iceCreamPlusButton.click();
@@ -59,8 +71,11 @@ describe('Create an order', () => {
 
         // Car search modal appears
     it('should click on the enter button', async () => {
+        await browser.url(`/`)
+        await page.fillAddresses('East 2nd Street, 601', '1300 1st St');
         const enterButton = await $(page.enterButton);
         await enterButton.waitForDisplayed();
         await enterButton.click();
+        await expect(await $(enterButton)).toBeExisting();
     })
 })

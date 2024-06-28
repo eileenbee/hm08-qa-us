@@ -104,8 +104,9 @@ module.exports = {
         await slideSwitch.click();
     },
     // 2 orders of ice cream
-    clickPlusButton: async function() {
+    iceCreamPlusbutton: async function() {
         const iceCreamPlusButton = await $(this.iceCreamPlusButton);
+        await iceCreamPlusButton.waitForDisplayed();
         await iceCreamPlusButton.click();
         await iceCreamPlusButton.click();
     },
@@ -113,6 +114,7 @@ module.exports = {
     clickEnterButton: async function() {
         const enterButton = await $(this.enterButton);
         await enterButton.waitForDisplayed();
+        await enterButton.click();
         await enterButton.click();
     }
 

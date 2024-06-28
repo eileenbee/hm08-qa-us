@@ -13,7 +13,7 @@
 -Initialize by typing the following into GitBash: npm install
 -Start server from project page and copy the server address
 -Add the server URL to the wdio.config.js file setting base Url
--Run all tests: npm run
+-Run all tests: npm run wdio
 
 # 4. Running the Tests:
 -In VS code use the template provided in the createAnOrder.e2e.js file.
